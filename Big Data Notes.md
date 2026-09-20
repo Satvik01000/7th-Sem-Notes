@@ -19,42 +19,92 @@ Big Data refers to the massive amounts of data generated every day from various 
 1. **Structured Data:**
    - Data that can be stored, queried, and retrieved in a fixed, 
 predefined format.
-    - It's key characteristics are it has a predefined schema (rows and columns), high data integrity via keys and constraints. It is easily searchable and queryable using SQL and it follows Schema-on-Write.
+    - Its key characteristics are that it has a predefined schema (rows and columns) and high data integrity via keys and constraints. It is easily searchable and queryable using SQL, and it follows Schema-on-Write.
     - Most common examples are RDBMS tables (MySQL, PostgreSQL, Oracle), spreadsheets (Excel), banking transactions, inventory systems.
-    - For purpose of storage and tools it uses Relational Databasaes and Data Warehouses.
+    - For the purpose of storage and tools, it uses Relational Databasaes and Data Warehouses.
 2. **Unstructured Data:**
    - Data that lacks any predefined conceptual model, format, or organizational schema.
    - Its key characteristics are having no fixed format or tabular structure, accounting for the vast majority of generated data, and carrying a high storage footprint. It follows Schema-on-Read and requires specialized processing techniques like Natural Language Processing (NLP), Computer Vision, or text mining.
 ---
    - Most common examples are text documents (PDF, Word), multimedia files (images, MP4 videos, audio), social media content, and IoT sensor feeds.
- - For purpose of storage and tools it uses Distributed File Systems (HDFS), Data Lakes, and Object Stores (like AWS S3).
+ - For the purpose of storage and tools, it uses Distributed File Systems (HDFS), Data Lakes, and Object Stores (like AWS S3).
 3. **Semi-Structured Data:**
    - Data that does not conform to a rigid relational schema but contains tags, markers, or internal keys to segregate data elements.
    - Its key characteristics are a flexible schema where fields can vary per entry, a self-describing hierarchical tree-like structure, and storage primarily as key-value pairs or documents. It is more manageable to query than unstructured data and is typically navigated using path-based tools like XPath or JSONPath.
    - Most common examples are JSON files, XML documents, emails (structured headers/metadata with text bodies), and server or application log files.
-   - For purpose of storage and tools it uses NoSQL Databases (such as MongoDB, CouchDB) and XML/JSON file repositories.
+   - For the purpose of storage and tools, it uses NoSQL Databases (such as MongoDB, CouchDB) and XML/JSON file repositories.
 ---
 # <span style="color: #bf4300;">Evolution of Big Data</span>
-The evolution of Big Data represents the transition from centralized, relational database systems handling small structured data to distributed, in-memory, and cloud-native frameworks capable of managing massive, multi-structured datasets in real time.
 
-### 1. Traditional Databases and Data Warehousing (1970s – 2000s)
-* **Relational Database Management Systems (RDBMS):** 
-  - Emerged during the 1970s and 1980s using systems like Oracle, IBM DB2, and SQL Server to manage structured data in tables (rows and columns).
-  - Leveraged Structured Query Language (SQL) for efficient retrieval, management, and ACID transaction guarantees.
-* **Data Warehousing (1990s):**
-  - Designed to aggregate and centralize structured historical operational data for reporting and Business Intelligence (BI).
-  - Utilized Online Analytical Processing (OLAP) multidimensional cubes and batch Extract, Transform, Load (ETL) pipelines.
+The shift from centralized relational systems to distributed, cloud-native, and real-time streaming architectures.
+
+```mermaid
+graph LR
+  RDBMS["RDBMS (1970s)"] --> DW["Data Warehouses (1990s)"]
+  DW --> Hadoop["Hadoop & NoSQL (2000s)"]
+  Hadoop --> Spark["Spark In-Memory (2010s)"]
+  Spark --> Cloud["Cloud & Lakes (Modern)"]
+```
+
+## 1. Traditional Databases (1970s – 1980s)
+
+- **Foundation:** Relational Database Management Systems (RDBMS) designed for structured data
+- **Core Technology:** Fixed tabular format queried using Structured Query Language (SQL)
+- **Key Guarantees:** Strict **ACID** transactions ensuring high data integrity
+- **Examples:** Early Oracle, IBM DB2, Microsoft SQL Server
+
+{reveal}
+> **Bottleneck:** Relies purely on vertical scaling (scale-up) and rigid Schema-on-Write, failing when workloads explode.
+
 ---
-* **Technical Bottlenecks:**
-  - Reliant on vertical scaling (scale-up), which became cost-prohibitive.
-  - Strictly schema-on-write, rendering them incapable of ingesting high-velocity, semi-structured, or unstructured datasets.
 
-# <span style="color: #bf4300;">Data Warehousing</span>
+## 2. Enterprise Data Warehousing (1990s)
+
+- **Purpose:** Decoupled analytics repository optimized for Business Intelligence (BI)
+- **Integration:** Consolidated historical data using scheduled batch **ETL** pipelines
+- **Storage Model:** Dimensional modeling utilizing **Star** and **Snowflake** schemas
+- **Processing:** Online Analytical Processing (OLAP) multidimensional queries
+
+{reveal}
+> **Bottleneck:** High licensing costs, multi-hour batch latency, and inability to handle semi-structured or unstructured formats.
+
+## 3. The Big Data Explosion & Hadoop (Mid 2000s)
+
+- **Growth Driver:** Web 2.0, search engines, and social media (Google, Facebook, YouTube)
+- **Google Papers (2003–2004):** Introduced Google File System (GFS) and MapReduce
+- **Apache Hadoop (2006):** Open-source distributed computing on commodity hardware clusters
+  - **HDFS:** Fault-tolerant distributed storage with block replication
+  - **MapReduce:** Distributed compute bringing execution to the data
+- **NoSQL Movement:** Flexible schema stores adhering to BASE and CAP theorem (MongoDB, Cassandra, HBase)
+
+---
+
+## 4. In-Memory Computing & Streaming (2010s)
+
+Hadoop's disk-bound MapReduce created heavy I/O latency during iterative processing.
+
+- **Apache Spark (2014):** In-memory processing with Resilient Distributed Datasets (RDDs), up to 100x faster than MapReduce
+- **Real-Time Stream Processing:** Continuous processing on data-in-motion with sub-second latencies
+  - Apache Kafka
+  - Apache Flink
+  - Apache Storm
+- **Target Use Cases:** Real-time fraud detection, dynamic pricing, and streaming recommendations
+
+## 5. Cloud-Native & Data Lakehouses (Modern)
+
+- **Decoupled Architecture:** Storage is fully decoupled from compute, enabling elastic scaling
+- **Pipeline Evolution:** Shift from ETL to **ELT** (Extract, Load, Transform)
+- **Data Lakes & Lakehouses:** Centralized object storage holding raw multi-format data using Schema-on-Read (Amazon S3, Google BigQuery, Snowflake)
+- **AI Integration:** Massive distributed pipelines feeding deep learning and predictive ML models
+---
+# <span style="color: #bf4300;">Data Warehouse vs Database</span>
 - A data warehouse is essentially a relational database at its core. Both of them use SQL as the query language.
 
 - The major difference between a Data Warehouse and a Database is the type of data that they store and the way they store it.
 
 - A simple example to understand a Data Warehouse can be: suppose there is a student in class 10th, and he has different notebooks for each subject; now say each notebook represents a Database for that subject. A Data Warehouse can be referred to as a bookshelf he has in his room, which stores all the notebooks he has had since he was in the first grade.
+
+- Can refer to this video [https://www.youtube.com/watch?v=myi50Ccfbwo](https://www.youtube.com/watch?v=myi50Ccfbwo).
 ---
 ### 1. Type of Data:
 - <span style="color: #bf4300;"> Standard Databases </span>  use OLTP (Online Transaction Processing), they are designed to store current, real-time data.
@@ -69,3 +119,14 @@ The evolution of Big Data represents the transition from centralized, relational
 - A <span style="color: #bf4300;"> Standard Databases </span> stores the data in Normal Form; this ensures there is no redundancy and no anomalies. This is the primary reason why databases have faster writes and updates but not faster reads, because now, for reading, queries have to have joins across multiple tables, which significantly reduces the performance of read queries.
 - In <span style="color: #bf4300;"> Data Warehouses</span>, on the other hand, it is a common practice to store the data in denormalised form, or even if it is normalised, a minimal number of tables are preferred. This ensures that the data can be read in a really fast manner but it does cause redundancy.
 - A data warehouse uses the concept of fact and dimension tables for the purpose of data storage; the fact table contains essential business information and requirements, whereas the dimension table stores the descriptive, detailed information.
+
+# <span style="color: #bf4300;">Challenges of Big Data</span>
+1. **Lack of Knowledge Professionals:** Organizations face a shortage of skilled professionals who possess the necessary in-depth knowledge to effectively work within the Big Data domain.
+2. **Lack of proper understanding of massive data:** Even when companies have skilled professionals, it becomes difficult for them to store, process, and understand data as it scales into massive data sizes.
+---
+3. **Data growth issues**: As Big Data grows over time, it creates a recurring loop of needing more hardware and higher financial investment to keep up with storage requirements.
+4. **Confusion during Big Data Tool Selection**: Selecting the right tools for analysis and storage is complex. Incorrect choices often lead to wasted time, effort, and financial resources.
+5. **Integrating data from a spread of sources**: Data arrives from various disparate sources—such as social media, emails, and customer logs—making it highly challenging to merge this information into a single, meaningful report.
+6. **Securing the data**: Because organizations focus heavily on processing and storing data, security often becomes an afterthought. This makes it easier for attackers to target the data once it is transmitted across a network.
+---
+# <span style="color: #bf4300;">Characteristics of Big Data</span>
