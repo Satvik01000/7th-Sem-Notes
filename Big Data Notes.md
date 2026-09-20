@@ -130,3 +130,20 @@ Hadoop's disk-bound MapReduce created heavy I/O latency during iterative process
 6. **Securing the data**: Because organizations focus heavily on processing and storing data, security often becomes an afterthought. This makes it easier for attackers to target the data once it is transmitted across a network.
 ---
 # <span style="color: #bf4300;">Characteristics of Big Data</span>
+Originally, Big Data was defined by 3 characteristics; it was defined by 3 V's :
+
+1. **Volume:** The first V of Big Data represents the sheer size of the data. Traditional data is measured in Gigabytes or sometimes in Terabytes, but Big Data is enormous; it is measured in Petabytes, sometimes even in Exabytes. Even for storing big data that cannot be done on a single node, a distributed system is used.
+
+2. **Velocity:** The second V represents the speed at which the data is generated and needs to be processed. Traditional data was generated in small amounts at predictable speeds, but Big Data is generated in massive amounts at a continuous high speed; thus, it cannot be processed by traditional databases.
+
+3. **Variety:** The third V represents the different forms and formats in which data is generated. Traditional databases primarily handle structured data stored in rows and columns. Big Data encompasses multiple formats, including structured, semi-structured (like XML, JSON, and server logs), and unstructured data (such as photos, videos, audio, and sensor streams), requiring schema-on-read architectures rather than fixed schemas.
+
+---
+
+### Extended V's of Big Data
+
+As Big Data evolved beyond the original 3 V's, two more critical characteristics were added:
+
+4. **Veracity:** The fourth V refers to the trustworthiness, quality, and accuracy of the data. Because Big Data is collected from diverse and uncontrolled sources—such as social media, web scraping, and IoT sensors—it often contains noise, inconsistencies, missing fields, or biases. Ensuring high veracity requires data cleaning, validation, and governance to prevent faulty analytical results.
+
+5. **Value:** The fifth V represents the actual business insights, operational improvements, or economic benefit derived from analyzing the data. Merely storing huge amounts of raw data provides no practical utility; the real significance of Big Data lies in transforming that raw information into actionable decision-making, predictive models, and cost reductions.
