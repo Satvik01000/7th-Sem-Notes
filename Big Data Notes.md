@@ -157,3 +157,41 @@ As Big Data evolved beyond the original 3 V's, two more critical characteristics
 | Uses MapReduce and machine learning to analyze raw and complex data. | Uses OLAP and SQL queries to analyze structured data. |
 | Works in real-time or near real-time to handle fast-moving data streams. | Works mostly on historical data in batches and is not as time-critical. |
 | Focuses on finding hidden patterns, predictions, and new opportunities. | Focuses on tracking performance metrics and helping managers make decisions. |
+
+---
+# <span style="color: #bf4300;">Hadoop</span>
+- Hadoop is software that is used for storing and processing large volumes of data (Big Data).
+- It is designed to store data in a distributed environment across many machines without relying on a single machine.
+- It is built to be scalable, fault-tolerant, and cost-effective. Instead of relying on expensive high-end hardware, Hadoop works by connecting many inexpensive computers (called nodes) in a cluster.
+### Hadoop Ecosystem:
+1. **HDFS (Hadoop Distributed File System):** A distributed, fault-tolerant file system that splits large datasets into blocks and stores them across a cluster of commodity hardware.
+2. **MapReduce:** A software framework and programming model used for processing vast amounts of data in parallel across distributed nodes.
+3. **Oozie:** A server-based workflow scheduler system that manages and coordinates dependent Hadoop and MapReduce execution jobs.
+4. **Hive:** A data warehouse software system built on top of Hadoop for querying and managing large datasets using an SQL-like language called HiveQL.
+5. **Pig:** A high-level data-flow platform and execution environment used for processing large datasets using a procedural scripting language called Pig Latin.
+---
+6. **Sqoop:** A data transfer tool designed to efficiently import and export bulk data between Hadoop (HDFS/Hive) and relational databases (RDBMS).
+7. **HBase:** A distributed, scalable, column-oriented NoSQL database that runs on top of HDFS to provide real-time, random read/write access to large datasets.
+8. **Flume:** A distributed, reliable service designed to collect, aggregate, and move large streams of real-time log or event data into HDFS.
+9. **ZooKeeper:** A centralized coordination service that provides configuration management, synchronization, and group naming services across distributed Hadoop nodes.
+
+## <span style="color: #bf4300; font-weight: bold;">HDFS (Hadoop Distributed File System):</span>
+
+<img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200728155931/Namenode-and-Datanode.png" style="max-width: 40%; height: auto;" />
+
+---
+
+HDFS and MapReduce operate together in a unified Master-Slave cluster architecture:
+
+1. **Master Node:**
+    - **NameNode:** Stores and manages HDFS metadata, including directory structures, block mappings, and file permissions. It oversees DataNodes; if a node fails to send periodic heartbeats, the NameNode marks it dead and triggers block re-replication on healthy nodes to maintain fault tolerance.
+   - **ResourceManager:** Allocates cluster compute resources (CPU/memory) and schedules processing tasks across slave nodes.
+
+2. **Slave Nodes (Worker Nodes):**
+   - **DataNode:** Stores and retrieves the actual data blocks, periodically sends heartbeats/block reports to the NameNode, and executes client read/write instructions.
+   - **NodeManager:** Monitored by the ResourceManager to execute compute containers and run MapReduce tasks locally where data lives.
+
+Files written to HDFS are split into fixed-size blocks (typically 64 MB or 128 MB), distributed across DataNodes, and processed locally via MapReduce to avoid network overhead.
+
+---
+## <span style="color: #bf4300; font-weight: bold;">MapReduce:</span>
