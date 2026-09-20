@@ -140,10 +140,20 @@ Originally, Big Data was defined by 3 characteristics; it was defined by 3 V's :
 
 ---
 
-### Extended V's of Big Data
-
+### Extended V's of Big Data (Non-Definational Traits)
 As Big Data evolved beyond the original 3 V's, two more critical characteristics were added:
 
 4. **Veracity:** The fourth V refers to the trustworthiness, quality, and accuracy of the data. Because Big Data is collected from diverse and uncontrolled sources—such as social media, web scraping, and IoT sensors—it often contains noise, inconsistencies, missing fields, or biases. Ensuring high veracity requires data cleaning, validation, and governance to prevent faulty analytical results.
 
 5. **Value:** The fifth V represents the actual business insights, operational improvements, or economic benefit derived from analyzing the data. Merely storing huge amounts of raw data provides no practical utility; the real significance of Big Data lies in transforming that raw information into actionable decision-making, predictive models, and cost reductions.
+---
+# <span style="color: #bf4300;">Big Data vs Business Intelligence</span>
+
+| Big Data | Business Intelligence |
+| :--- | :--- |
+| Deals with large, complex data in structured, semi-structured, and unstructured forms. | Deals with structured data typically stored in data warehouses. |
+| Has massive volume and is processed using tools like Hadoop, Spark, and NoSQL databases. | Has moderate volume and is used to create reports and dashboards using BI tools. |
+| Uses distributed systems like HDFS and Data Lakes for storage. | Uses centralized Data Warehouses for storage. |
+| Uses MapReduce and machine learning to analyze raw and complex data. | Uses OLAP and SQL queries to analyze structured data. |
+| Works in real-time or near real-time to handle fast-moving data streams. | Works mostly on historical data in batches and is not as time-critical. |
+| Focuses on finding hidden patterns, predictions, and new opportunities. | Focuses on tracking performance metrics and helping managers make decisions. |
